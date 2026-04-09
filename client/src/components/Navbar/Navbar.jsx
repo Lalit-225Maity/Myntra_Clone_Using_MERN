@@ -7,9 +7,21 @@ import { CiHeart } from "react-icons/ci";
 import { IoBagOutline } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({search,setsearch}) => {
   const navigate = useNavigate();
   const [profiledetail, setprofiledetail] = useState(false);
+ 
+  const Searchdata = (e) => {
+    const value = e.target.value
+    console.log(value);
+    setsearch(value)
+
+  }
+  const handleEnter=(e)=>{
+    if(e.key==='Enter'){
+      navigate('search')
+    }
+  }
   return (
     <div className='navbar'>
       <img src="/free-myntra-icon-svg-download-png-2249158.png" alt="" onClick={() => { navigate('/') }} />
@@ -21,13 +33,16 @@ const Navbar = () => {
       </div>
       <div className="search-product">
         <IoSearch className='icon_1' />
-        <input type="text" placeholder='search your product' />
+        <input type="text" placeholder='search your product' value={search} onChange={Searchdata}  onKeyDown={handleEnter}/>
       </div>
       <div className="navbar-right">
-        <NavLink className={(e) => { return e.isActive ? "active" : "not-active" }} to='profile' onMouseEnter={() => { setprofiledetail(true) }} onMouseLeave={() => { setprofiledetail(false) }}><CiUser className='icon_2' />Profile
+        <div className="profile-wrapper" onMouseEnter={() => { setprofiledetail(true) }} onMouseLeave={() => { setprofiledetail(false) }}>
+          <NavLink className={(e) => { return e.isActive ? "active" : "not-active" }} to='profile'><CiUser className='icon_2' />Profile
+
+          </NavLink>
           {profiledetail && (
             <div className="user-login-order">
-              <button>Login</button>
+              <button onClick={(e) => { navigate('/login'); e.stopPropagation() }}>Login</button>
               <div className="user-order">
                 <p>Orders</p>
                 <p>Wishlist</p>
@@ -37,7 +52,7 @@ const Navbar = () => {
               </div>
             </div>
           )}
-        </NavLink>
+        </div>
         <NavLink className={(e) => { return e.isActive ? "active" : "not-active" }} to='wish'><CiHeart className='icon_2' />Wishlist</NavLink>
         <NavLink className={(e) => { return e.isActive ? "active" : "not-active" }} to='bag'><IoBagOutline className='icon_2' />Bag</NavLink>
       </div>

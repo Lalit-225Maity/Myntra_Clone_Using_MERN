@@ -5,6 +5,8 @@ const dotenv = require('dotenv');
 dotenv.config();
 const connectDb=require('./db/db');
 connectDb();
+const items=require('./Router/router');
+app.use('/api',items);
 const port = process.env.PORT;
 app.listen(port, () => {
     console.log(`server running at ${port}`);
