@@ -5,25 +5,41 @@ import { CiUser } from "react-icons/ci";
 import './Navbar.css'
 import { CiHeart } from "react-icons/ci";
 import { IoBagOutline } from "react-icons/io5";
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const [profiledetail, setprofiledetail] = useState(false);
   return (
     <div className='navbar'>
-      <img src="/free-myntra-icon-svg-download-png-2249158.png" alt="" />
+      <img src="/free-myntra-icon-svg-download-png-2249158.png" alt="" onClick={() => { navigate('/') }} />
       <div className="pages-headings">
-        <NavLink to='men' className={(e)=>{return e.isActive?"active":"not-active"}}>MEN</NavLink>
-        <NavLink to='women' className={(e)=>{return e.isActive?"active":"not-active"}}>WOMEN</NavLink>
-        <NavLink to='/' className={(e)=>{return e.isActive?"active":"not-active"}}>HOME</NavLink>
-        <NavLink to='kids' className={(e)=>{return e.isActive?"active":"not-active"}}>KIDS</NavLink>
+        <NavLink to='men' className={(e) => { return e.isActive ? "active" : "not-active" }}>MEN</NavLink>
+        <NavLink to='women' className={(e) => { return e.isActive ? "active" : "not-active" }}>WOMEN</NavLink>
+        <NavLink to='/' className={(e) => { return e.isActive ? "active" : "not-active" }}>HOME</NavLink>
+        <NavLink to='kids' className={(e) => { return e.isActive ? "active" : "not-active" }}>KIDS</NavLink>
       </div>
       <div className="search-product">
         <IoSearch className='icon_1' />
-        <input type="text" />
+        <input type="text" placeholder='search your product' />
       </div>
       <div className="navbar-right">
-        <div className="profile"><CiUser className='icon_2' />Profile</div>
-        <div className="wishlist"><CiHeart className='icon_2' />Wishlist</div>
-        <div className="bag"><IoBagOutline className='icon_2' />Bag</div>
+        <NavLink className={(e) => { return e.isActive ? "active" : "not-active" }} to='profile' onMouseEnter={() => { setprofiledetail(true) }} onMouseLeave={() => { setprofiledetail(false) }}><CiUser className='icon_2' />Profile
+          {profiledetail && (
+            <div className="user-login-order">
+              <button>Login</button>
+              <div className="user-order">
+                <p>Orders</p>
+                <p>Wishlist</p>
+                <p>Gift Cards</p>
+                <p>Contact Us</p>
+                <p>Myntra Insider</p>
+              </div>
+            </div>
+          )}
+        </NavLink>
+        <NavLink className={(e) => { return e.isActive ? "active" : "not-active" }} to='wish'><CiHeart className='icon_2' />Wishlist</NavLink>
+        <NavLink className={(e) => { return e.isActive ? "active" : "not-active" }} to='bag'><IoBagOutline className='icon_2' />Bag</NavLink>
       </div>
     </div>
   )
