@@ -1,0 +1,62 @@
+export const Product=[
+    {
+        img:"https://rukminim1.flixcart.com/fk-p-flap/896/558/image/a372a70dcd654032.jpg?q=60"
+    },
+    {
+        img:"https://rukminim2.flixcart.com/fk-p-flap/3200/2000/image/399a9f30d492972b.jpg?q=60"
+    },
+    {
+        img:"https://rukminim2.flixcart.com/fk-p-flap/3200/2000/image/04739e419e259e70.jpg?q=60"
+    },
+    {
+        img:"https://rukminim2.flixcart.com/fk-p-flap/3200/2000/image/9a0ac3e28822ad40.jpg?q=60"
+    },
+    {
+        img:"https://rukminim2.flixcart.com/fk-p-flap/3200/2000/image/828ee3e07470c184.jpg?q=60"
+    },
+    {
+        img:"https://rukminim2.flixcart.com/fk-p-flap/3200/2000/image/9bb8cf8c9c7941ef.jpg?q=60"
+    }
+]
+export const Cloths=[
+    {
+        image:"https://rukminim1.flixcart.com/fk-p-flap/3340/5040/image/746b3de5a1e7614d.jpg?q=60"
+    },
+    {
+        image:"https://rukminim1.flixcart.com/fk-p-flap/3340/5040/image/6789cb6262a3c382.jpg?q=60"
+    },
+    {
+        image:"https://rukminim1.flixcart.com/fk-p-flap/3340/5040/image/9d6f1dbe018390a4.jpg?q=60"
+    },
+    {
+        image:"https://rukminim1.flixcart.com/fk-p-flap/3340/5040/image/351b8b4938afcf2f.jpg?q=60"
+    },
+    {
+        image:"https://rukminim1.flixcart.com/fk-p-flap/3340/5040/image/3545e60d1cf70573.jpg?q=60"
+    },
+    {
+        image:"https://rukminim1.flixcart.com/fk-p-flap/3340/5040/image/f2edc610e7aa6ba0.jpg?q=60"
+    },
+    {
+        image:"https://rukminim1.flixcart.com/fk-p-flap/700/920/image/6871d015db6f11ee.jpg?q=60"
+    },
+    {
+        image:"https://rukminim1.flixcart.com/fk-p-flap/700/920/image/9e32c6ce85689cba.jpg?q=60"
+    },
+    {
+        image:"https://rukminim1.flixcart.com/fk-p-flap/3340/5040/image/f55316ef4561fd9a.jpg?q=60"
+    },
+    {
+        image:"https://rukminim1.flixcart.com/fk-p-flap/3340/5040/image/a3fef17a2a2d9448.jpg?q=60"
+    },
+     {
+        image:"https://rukminim1.flixcart.com/fk-p-flap/3340/5040/image/845c74d3bd05f6a0.jpg?q=60"
+    },
+     {
+        image:"https://rukminim1.flixcart.com/fk-p-flap/3340/5040/image/27d30a0f8e01e73e.jpg?q=60"
+    },
+     {
+        image:"https://rukminim1.flixcart.com/fk-p-flap/3340/5040/image/f42e7751e0e71ea1.jpg?q=60"
+    },
+    
+]

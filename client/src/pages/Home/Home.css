@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+*{
+      font-family: "Open Sans", sans-serif;
+}
+.home {
+    margin-top: 80px;
+
+
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f5f5f6;
+
+}
+
+/* Image container */
+.home-image {
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    gap: 10px;
+
+
+}
+
+/* Image styling */
+.home-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    object-fit: contain;
+    /* keeps image ratio nice */
+    transition: opacity 0.8s ease-in-out;
+}
+
+/* Optional: smooth fade animation */
+.home-image img {
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0.5;
+        transform: scale(1.02);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Main section */
+.home-cloths {
+    width: 100%;
+    padding: 20px 30px;
+    background-color: #f1f3f6;
+}
+
+/* Heading */
+.home-cloths h1 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #212121;
+}
+
+/* Deals container */
+.cloths-deals {
+    display: flex;
+    gap: 20px;
+    overflow: hidden;
+ 
+    align-items: center;
+}
+
+/* Each image */
+.cloths-deals img {
+     
+    width: 300px;
+
+    height: 450px;
+    
+    object-fit: contain;
+    border-radius: 10px;
+    /* padding: 15px; */
+    background-color: skyblue;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* Hover effect */
+.cloths-deals img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
