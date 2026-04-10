@@ -14,12 +14,12 @@ const InsertProduct = async (req, res) => {
 }
 const searchProduct = async (req, res) => {
     try {
-         let { name = "", brand = "" } = req.query;
-        name=name.trim();
-        brand=brand.trim();
-        if(!name&&!brand){
+        let { name = "", brand = "" } = req.query;
+        name = name.trim();
+        brand = brand.trim();
+        if (!name && !brand) {
             return res.status(404).json({
-                FindProduct:[]
+                FindProduct: []
             })
         }
         const FindProduct = await Productmodel.find({
@@ -37,4 +37,21 @@ const searchProduct = async (req, res) => {
         })
     }
 }
-module.exports = { InsertProduct, searchProduct }
+const FilterProduct = async (req, res) => {
+    try {
+         let { brand = "" } = req.query;
+        brand = brand.trim();
+        const model = brand.split(",");
+        const findProduct = await Productmodel.find({
+            brand: { $in: model }
+        })
+        res.status(200).json({
+            findProduct
+        })
+    } catch (error) {
+         res.status(500).json({
+            message: error.message
+        })
+    }
+}
+module.exports = { InsertProduct, searchProduct ,FilterProduct}

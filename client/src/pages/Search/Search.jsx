@@ -4,13 +4,27 @@ import { useForm } from 'react-hook-form'
 import axios from 'axios'
 const Search = ({ search }) => {
     const [searchdata, setsearchdata] = useState([]);
-    const [userfilter, setuserfilter] = useState(false);
+
+    const {
+        register,
+        watch
+    } = useForm();
+    const filterdata = watch("brand");
     useEffect(() => {
         (async () => {
             try {
-                const response = await axios.get(`/api/search?name=${search}&brand=${search}`);
-                console.log(response.data.FindProduct);
-                setsearchdata(response.data.FindProduct)
+                if (filterdata && filterdata.length > 0) {
+                    const response = await axios.get(`/api/filter?brand=${filterdata}`);
+                     console.log(response.data.findProduct)
+                     console.log(filterdata);
+                     
+                    setsearchdata(response.data.findProduct)
+                }
+                else {
+                    const response = await axios.get(`/api/search?name=${search}&brand=${search}`);
+                    console.log(response.data.FindProduct);
+                    setsearchdata(response.data.FindProduct)
+                }
 
 
             }
@@ -19,16 +33,10 @@ const Search = ({ search }) => {
 
             }
         })();
-    }, [search])
-    const {
-        register,
-        watch
-    } = useForm();
-    const filterdata = watch("brand");
-    useEffect(() => {
-        console.log(filterdata);
+    }, [search, filterdata])
 
-    }, [filterdata])
+
+
 
     const checkT = [
         { brand: "Urban Threads" },
@@ -66,8 +74,12 @@ const Search = ({ search }) => {
             <div className="serach-product-container">
                 {searchdata.length > 0 && searchdata.map((i) => (
                     <div className="pro">
+                       <img src={i.images_url} alt="" />
                         <p>{i.brand}</p>
-                        <img src={i.images_url} alt="" />
+                        <p>{i.name}</p>
+                         <p>Rs.{Math.ceil((i.price)*10)}</p>
+                         <p>{Math.ceil((i.price)*10)+Math.floor((i.discountPrice)*10)}</p>
+                         <p>Rs.{Math.floor((i.discountPrice)*10)}Off.</p>
                     </div>
                 ))}
             </div>
