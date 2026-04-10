@@ -65,18 +65,9 @@ const Product = new Schema({
     type: String,
     enum: ['Men', 'Women', 'Kids']
   },
-
-   images: [
-  {
-    url: {
-      type: String,
-      required: true
-    },
-    altText: {
-      type: String
-    }
-  }
-],
+  images_url:{
+    type:String
+  },
 
   rating: {
     type: Number,

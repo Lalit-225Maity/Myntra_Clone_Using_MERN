@@ -14,20 +14,20 @@ const InsertProduct = async (req, res) => {
 }
 const searchProduct = async (req, res) => {
     try {
-        const { name = "", brand = "" } = req.query;
-        const MyProduct = {};
-        if (name.trim() === "" && brand.trim() === "") {
-            return res.status(200).json({ FindProduct: [] });
+         let { name = "", brand = "" } = req.query;
+        name=name.trim();
+        brand=brand.trim();
+        if(!name&&!brand){
+            return res.status(404).json({
+                FindProduct:[]
+            })
         }
-
-        if (name) {
-            MyProduct.name = { $regex: name, $options: "i" };
-        }
-        if (brand) {
-            MyProduct.brand = { $regex: brand, $options: "i" };
-        }
-
-        const FindProduct = await Productmodel.find(MyProduct)
+        const FindProduct = await Productmodel.find({
+            $or: [
+                { name: { $regex: name, $options: "i" } },
+                { brand: { $regex: brand, $options: "i" } }
+            ]
+        })
         res.status(200).json({
             FindProduct: FindProduct
         })

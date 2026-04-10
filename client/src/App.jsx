@@ -24,7 +24,7 @@ const App = () => {
           <Route path='wish' element={<Wishlist />} />
           <Route path='profile' element={<Profile />} />
           <Route path='bag' element={<Bag />} />
-          <Route path='search' element={<Search search={search}  />} />
+          <Route path='search' element={<Search search={search}    />} />
         </Route>
         <Route path='/login' element={<Login />} />
       </Routes>
