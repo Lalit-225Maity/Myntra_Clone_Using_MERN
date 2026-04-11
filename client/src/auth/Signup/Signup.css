@@ -1,0 +1,55 @@
+ .account {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+}
+
+.account form {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 400px;
+}
+
+.account form .MuiTextField-root {
+  width: 100%;
+}
+
+.account form .MuiButton-root {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  font-weight: 500;
+  text-transform: capitalize;
+  font-size: 15px;
+  border-color: #2e7d32;
+  color: #2e7d32;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.account form .MuiButton-root:hover {
+  background-color: rgba(46, 125, 50, 0.06);
+}
+
+.loading {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #2e7d32;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
