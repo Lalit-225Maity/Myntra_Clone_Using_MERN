@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import './Search.css'
 const Search = ({ search }) => {
+    const navigate=useNavigate();
     const [searchdata, setsearchdata] = useState([]);
 
     const {
@@ -15,9 +18,9 @@ const Search = ({ search }) => {
             try {
                 if (filterdata && filterdata.length > 0) {
                     const response = await axios.get(`/api/filter?brand=${filterdata}`);
-                     console.log(response.data.findProduct)
-                     console.log(filterdata);
-                     
+                    console.log(response.data.findProduct)
+                    console.log(filterdata);
+
                     setsearchdata(response.data.findProduct)
                 }
                 else {
@@ -61,7 +64,10 @@ const Search = ({ search }) => {
     return (
         <div className='search'>
             <div className="filter-product">
-
+                <div className="user-filter">
+                    <h2>Filters</h2>
+                </div>
+                <h4>Brands</h4>
                 {checkT.map((i, index) => (
                     <div className="select-brand">
                         <input type="checkbox" {...register("brand")} value={i.brand} id={index} />
@@ -73,13 +79,15 @@ const Search = ({ search }) => {
             </div>
             <div className="serach-product-container">
                 {searchdata.length > 0 && searchdata.map((i) => (
-                    <div className="pro">
-                       <img src={i.images_url} alt="" />
+                    <div className="product-details-container" onClick={()=>{navigate('/items',{state:{product_detail:i}})}}>
+                        <img src={i.images_url} alt="" />
                         <p>{i.brand}</p>
                         <p>{i.name}</p>
-                         <p>Rs.{Math.ceil((i.price)*10)}</p>
-                         <p>{Math.ceil((i.price)*10)+Math.floor((i.discountPrice)*10)}</p>
-                         <p>Rs.{Math.floor((i.discountPrice)*10)}Off.</p>
+                        <div className="prices">
+                            <p>Rs.{Math.ceil((i.price) * 10)}</p>
+                            <p style={{ textDecoration: "line-through" }}>Rs.{Math.ceil((i.price) * 10) + Math.floor((i.discountPrice) * 10)}</p>
+                            <p>Rs.{Math.floor((i.discountPrice) * 10)} Off.</p>
+                        </div>
                     </div>
                 ))}
             </div>
