@@ -1,66 +1,73 @@
-.login {
-  min-height: 100vh;
+ .login {
   display: flex;
-  align-items: center;
   justify-content: center;
-  background: #f5f5f5;
+  align-items: center;
+
+  min-height: 100vh;
+   background-color: #1a1a2e;
 }
 
-.login form {
-  background: #fff;
-  border: 1px solid #e0e0e0;
-  border-radius: 12px;
-  padding: 2rem 2.5rem;
-  width: 100%;
-  max-width: 360px;
+.emil-form {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 20px;
+  background: #ffffff;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  min-width: 420px;
 }
 
-.heading {
-  text-align: center;
-  margin-bottom: 0.4rem;
+.emil-form form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
 }
 
-.heading h4 {
-  font-size: 26px;
-  font-weight: 700;
-  color: #FF3F6C;
-  letter-spacing: 1px;
+.emil-form form .MuiTextField-root {
+  flex: 1;
 }
 
-.heading p {
-  font-size: 12px;
-  color: #888;
-  margin-top: 4px;
+.emil-form form .MuiButton-root {
+  white-space: nowrap;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+  height: 40px;
 }
-.load {
-  width: 18px;
-  height: 18px;
-  border: 2.5px solid  #FF3F6C;;
-  border-top-color: transparent;
+
+.send {
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top-color: currentColor;
   border-radius: 50%;
-  animation: spin 0.7s linear infinite;
+  animation: spin 0.75s linear infinite;
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg);
- 
-}
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.forgot-signup {
+.sign-forgot {
+    display: flex;
+    justify-content:space-between;
   text-align: center;
-  font-size: 13px;
+  font-size: 0.875rem;
+  gap: 30px;
 }
 
-.forgot-signup a {
-  color: #FF3F6C;
+.sign-forgot a {
+  color: #1976d2;
+
   text-decoration: none;
   font-weight: 500;
+  transition: color 0.2s ease;
 }
 
-.forgot-signup a:hover {
+.sign-forgot a:hover {
+  color: #115293;
   text-decoration: underline;
 }

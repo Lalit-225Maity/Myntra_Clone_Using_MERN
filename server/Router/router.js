@@ -1,5 +1,5 @@
 const{InsertProduct,searchProduct,FilterProduct}=require('../controller/Products');
-const{createUser,createOTP,VerifyOTP,Login,Logout}=require('../controller/User');
+const{createUser,createOTP,VerifyOTP,Logout}=require('../controller/User');
 const{CreateBag,getBag}=require('../controller/Bag');
 const verifyauth=require('../middleware/Authentication');
 const express=require('express');
@@ -10,7 +10,6 @@ router.get('/filter',FilterProduct);
 router.post('/createuser',createUser);
 router.post('/sendotp',createOTP);
 router.post('/verifyotp',VerifyOTP);
-router.post('/login',Login);
 router.post('/logout',Logout);
 router.post('/createbag',verifyauth,CreateBag);
 router.get('/getbag',verifyauth,getBag);

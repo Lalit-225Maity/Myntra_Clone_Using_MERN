@@ -9,7 +9,6 @@ import Kids from './pages/Kids/Kids'
 import Bag from './pages/Bag/Bag'
 import Wishlist from './pages/Wishlist/Wishlist'
 import Login from './auth/Login/Login'
-import Otp from './auth/OTP/Otp'
 import Search from './pages/Search/Search'
 import Profile from './pages/Profile/Profile'
 import Item from './pages/Item.jsx/Item'
@@ -32,7 +31,6 @@ const App = () => {
         </Route>
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
-        <Route path='/otp' element={<Otp/>}/>
       </Routes>
     </div>
   )

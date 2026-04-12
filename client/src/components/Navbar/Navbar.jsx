@@ -1,26 +1,43 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { IoSearch } from "react-icons/io5";
 import { CiUser } from "react-icons/ci";
+import axios from 'axios';
 import './Navbar.css'
 import { CiHeart } from "react-icons/ci";
 import { IoBagOutline } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
 
-const Navbar = ({search,setsearch}) => {
+const Navbar = ({ search, setsearch }) => {
   const navigate = useNavigate();
   const [profiledetail, setprofiledetail] = useState(false);
- 
+
   const Searchdata = (e) => {
     const value = e.target.value
     console.log(value);
     setsearch(value)
 
   }
-  const handleEnter=(e)=>{
-    if(e.key==='Enter'){
+  const handleEnter = (e) => {
+    if (e.key === 'Enter') {
       navigate('search')
     }
+  }
+  const [userlogin, setuserlogin] = useState(null);
+  useEffect(() => {
+    const users = localStorage.getItem("User");
+    if (users) {
+      setuserlogin(JSON.parse(users))
+    }
+  }, [])
+  const Logout = () => {
+    setTimeout(async () => {
+      const response = await axios.post('/api/logout');
+      localStorage.removeItem("User");
+      setuserlogin(null)
+      window.location.reload();
+    }, 3000);
+
   }
   return (
     <div className='navbar'>
@@ -33,7 +50,7 @@ const Navbar = ({search,setsearch}) => {
       </div>
       <div className="search-product">
         <IoSearch className='icon_1' />
-        <input type="text" placeholder='search your product' value={search} onChange={Searchdata}  onKeyDown={handleEnter}/>
+        <input type="text" placeholder='search your product' value={search} onChange={Searchdata} onKeyDown={handleEnter} />
       </div>
       <div className="navbar-right">
         <div className="profile-wrapper" onMouseEnter={() => { setprofiledetail(true) }} onMouseLeave={() => { setprofiledetail(false) }}>
@@ -42,13 +59,14 @@ const Navbar = ({search,setsearch}) => {
           </NavLink>
           {profiledetail && (
             <div className="user-login-order">
-              <button onClick={(e) => { navigate('/login'); e.stopPropagation() }}>Login</button>
+              {userlogin ? <p>{userlogin.username.toUpperCase()}</p> : <button onClick={(e) => { navigate('/login'); e.stopPropagation() }}>Login</button>}
               <div className="user-order">
                 <p>Orders</p>
                 <p>Wishlist</p>
                 <p>Gift Cards</p>
                 <p>Contact Us</p>
                 <p>Myntra Insider</p>
+                <p onClick={()=>{Logout()}}>Log out</p>
               </div>
             </div>
           )}
