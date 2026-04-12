@@ -144,8 +144,8 @@
 }
 
 .product-size input[type="radio"]:checked + label {
-  border: 2px solid #111;
-  color: #111;
+  border: 2px solid #FF3737;
+  color: #FF3737;
   font-weight: 700;
   background: #f5f5f5;
 }
@@ -194,8 +194,56 @@
 .bag-wish button:nth-child(2):hover {
   background: #f5f5f5;
 }
+ 
+.product-colors-select h4 {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #333;
+  margin-bottom: 12px;
+}
 
-/* ── Responsive ── */
+.product-colors-select {
+  display: flex;
+ 
+  gap: 6px;
+}
+
+.choose-color {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.choose-color input[type="radio"] {
+  display: none;
+}
+
+.choose-color label {
+  position: relative;
+  padding: 8px 20px;
+  border: 1.5px solid #d1d1d1;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #444;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+  user-select: none;
+}
+
+.choose-color label:hover {
+  border-color: #555;
+  background: #f5f5f5;
+}
+
+.choose-color input[type="radio"]:checked + label {
+  border:2px solid #FF3737;
+  background: none;
+  color: #FF3737;
+  font-weight: 500;
+}
+
+ 
 @media (max-width: 768px) {
   .items {
     flex-direction: column;

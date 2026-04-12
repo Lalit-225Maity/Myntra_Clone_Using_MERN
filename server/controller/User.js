@@ -1,7 +1,9 @@
 const User = require('../models/User');
 const sendEmail = require('../sendOTP/sendOTP');
 const jwt = require('jsonwebtoken');
-const OTP = require('../models/OTP')
+const OTP = require('../models/OTP');
+const dotenv=require('dotenv');
+dotenv.config();
 const createUser = async (req, res) => {
     try {
         const { username, email, phone_number, address, Pin } = req.body;
@@ -96,6 +98,9 @@ const Login = async (req, res) => {
                 message: "Invalid Email ID"
             })
         }
+        res.status(200).json({
+            verifyEmail
+        })
 
     } catch (error) {
 
