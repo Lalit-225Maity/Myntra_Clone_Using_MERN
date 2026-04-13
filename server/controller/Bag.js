@@ -3,10 +3,10 @@ const Bag = require('../models/Bag');
 const CreateBag = async (req, res) => {
     try {
         const token = req.user;
-        const { product_name, product_brand, product_price, delivery_date, size } = req.body;
+        const { product_name, product_brand, product_price, delivery_date, size,image } = req.body;
         const userbag = new Bag({
             userID: token.id,
-            product_name, product_brand, product_price, delivery_date, size
+            product_name, product_brand, product_price, delivery_date, size,image
         })
         await userbag.save();
         res.status(200).json({
@@ -33,4 +33,15 @@ const getBag = async (req, res) => {
         })
     }
 }
-module.exports = { CreateBag, getBag }
+const removeItems=async(req,res)=>{
+    try {
+        const{_id}=req.body;
+        const RemoveBag=await Bag.deleteOne({_id})
+        res.status(200).json({
+            RemoveBag
+        })
+    } catch (error) {
+        
+    }
+}
+module.exports = { CreateBag, getBag,removeItems }

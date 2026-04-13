@@ -1,49 +1,46 @@
- .account {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.account {
   min-height: 100vh;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   background-color: #f5f5f5;
 }
 
-.account form {
+.signup-form {
   background-color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
   padding: 2rem 2.5rem;
   border-radius: 12px;
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 400px;
+  max-width: 420px;
 }
 
-.account form .MuiTextField-root {
-  width: 100%;
+.signup-form h4 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
 
-.account form .MuiButton-root {
-  width: 100%;
-  padding: 10px;
-  margin-top: 8px;
-  font-weight: 500;
-  text-transform: capitalize;
-  font-size: 15px;
-  border-color: #2e7d32;
-  color: #2e7d32;
-  border-radius: 8px;
-  transition: background-color 0.2s ease;
+.signup-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.account form .MuiButton-root:hover {
-  background-color: rgba(46, 125, 50, 0.06);
-}
-
+ 
 .loading {
   width: 18px;
   height: 18px;
-  border: 2px solid #2e7d32;
-  border-top-color: transparent;
+  border: 2px solid transparent;
+  border-top-color: #2e7d32;
   border-radius: 50%;
   animation: spin 0.7s linear infinite;
 }
@@ -51,5 +48,12 @@
 @keyframes spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 480px) {
+  .signup-form {
+    padding: 1.5rem 1.25rem;
+    margin: 1rem;
   }
 }

@@ -17,22 +17,25 @@ const Item = () => {
   const DP = Math.ceil((product_detail.price) * 10);
   const OP = Math.ceil((product_detail.price) * 10) + Math.floor((product_detail.discountPrice) * 10)
   const Per = ((OP - DP) / OP) * 100;
-  
+
   const p_size = watch("size");
-  const date=new Date();
- const ToBag=()=>{
-   setTimeout(async() => {
-     try {
-       const response=await axios.post('/api/createbag',{product_name:product_detail.name, product_brand:product_detail.brand, product_price:Math.ceil((product_detail.price) * 10), delivery_date: date.setDate(date.getDate()+5) , size:p_size});
-       console.log(response.data);
-     } catch (error) {
-     
-      console.log(error.response.data.message);
-      
-     }
-   }, 3000);
- }
- 
+  const date = new Date();
+  const ToBag = () => {
+    setTimeout(async () => {
+      try {
+        const response = await axios.post('/api/createbag', {
+          product_name: product_detail.name, product_brand: product_detail.brand, product_price: Math.ceil((product_detail.price) * 10), delivery_date: date.setDate(date.getDate() + 5), size: p_size, image: product_detail.
+            images_url
+        });
+        console.log(response.data);
+      } catch (error) {
+
+        console.log(error.response.data.message);
+
+      }
+    }, 3000);
+  }
+
   return (
     <div className='items'>
       <div className="user-product-image">
@@ -64,13 +67,13 @@ const Item = () => {
         <div className="product-colors-select">
           {product_detail.colors.map((i) => (
             <div className="choose-color">
-              <input type="radio" id={i} name='colors' value={i} onChange={(e) => { setproduct_color(e.target.value); }} checked={product_color===i} />
+              <input type="radio" id={i} name='colors' value={i} onChange={(e) => { setproduct_color(e.target.value); }} checked={product_color === i} />
               <label htmlFor={i}>{i}</label>
             </div>
           ))}
         </div>
         <div className="bag-wish">
-          <button onClick={() => {ToBag()}}>Add to Bag</button>
+          <button onClick={() => { ToBag() }}>Add to Bag</button>
           <button onClick={() => { navigate('/wish') }}>Wishlist</button>
         </div>
       </div>

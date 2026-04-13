@@ -18,6 +18,9 @@ const Bag=new Schema({
     },
     size:{
         type:String
+    },
+    image:{
+        type:String
     }
 })
 const Bags=model("Bag",Bag);

@@ -9,7 +9,20 @@ import { CiHeart } from "react-icons/ci";
 import { IoBagOutline } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
 
-const Navbar = ({ search, setsearch,count }) => {
+const Navbar = ({ search, setsearch }) => {
+const [count, setcount] = useState(0);
+   useEffect(() => {
+    (async()=>{
+      try {
+        const response=await axios.get('/api/getbag');
+        console.log(response.data.checkUser);
+        setcount(response.data.checkUser.length);
+      } catch (error) {
+        console.log(error);
+        
+      }
+    })();
+ }, [count])
   const navigate = useNavigate();
   const [profiledetail, setprofiledetail] = useState(false);
   
