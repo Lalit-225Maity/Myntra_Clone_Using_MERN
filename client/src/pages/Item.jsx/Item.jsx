@@ -32,6 +32,7 @@ const Item = () => {
      }
    }, 3000);
  }
+ 
   return (
     <div className='items'>
       <div className="user-product-image">

@@ -4,14 +4,15 @@ import { IoSearch } from "react-icons/io5";
 import { CiUser } from "react-icons/ci";
 import axios from 'axios';
 import './Navbar.css'
+import Badge from '@mui/material/Badge';
 import { CiHeart } from "react-icons/ci";
 import { IoBagOutline } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
 
-const Navbar = ({ search, setsearch }) => {
+const Navbar = ({ search, setsearch,count }) => {
   const navigate = useNavigate();
   const [profiledetail, setprofiledetail] = useState(false);
-
+  
   const Searchdata = (e) => {
     const value = e.target.value
     console.log(value);
@@ -59,20 +60,29 @@ const Navbar = ({ search, setsearch }) => {
           </NavLink>
           {profiledetail && (
             <div className="user-login-order">
-              {userlogin ? <p>{userlogin.username.toUpperCase()}</p> : <button onClick={(e) => { navigate('/login'); e.stopPropagation() }}>Login</button>}
+              {userlogin ? (
+                <div className="user-login-profile">
+                  <h4>Hello {userlogin.username.toUpperCase()}</h4>
+                  <p>{userlogin.email}</p>
+                </div>
+              ) : <button onClick={(e) => { navigate('/login'); e.stopPropagation() }}>Login</button>}
               <div className="user-order">
                 <p>Orders</p>
                 <p>Wishlist</p>
                 <p>Gift Cards</p>
                 <p>Contact Us</p>
                 <p>Myntra Insider</p>
-                <p onClick={()=>{Logout()}}>Log out</p>
+                {userlogin && <p onClick={() => { Logout() }}>Log out</p>}
               </div>
             </div>
           )}
         </div>
         <NavLink className={(e) => { return e.isActive ? "active" : "not-active" }} to='wish'><CiHeart className='icon_2' />Wishlist</NavLink>
-        <NavLink className={(e) => { return e.isActive ? "active" : "not-active" }} to='bag'><IoBagOutline className='icon_2' />Bag</NavLink>
+        <NavLink className={(e) => { return e.isActive ? "active" : "not-active" }} to='bag'>
+        
+            <Badge badgeContent={count}  variant="standard" color="warning"  className='badge-bag'><IoBagOutline className='icon_2' />Bag</Badge>
+         
+        </NavLink>
       </div>
     </div>
   )

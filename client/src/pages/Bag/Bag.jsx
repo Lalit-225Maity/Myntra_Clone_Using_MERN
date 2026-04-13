@@ -1,9 +1,21 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
 import { Helmet } from 'react-helmet'
-const Bag = () => {
-  const { state } = useLocation();
-  const { product_detail, product_color, p_size } = state || {};
+import axios from 'axios'
+const Bag = ({setcount}) => {
+ 
+ useEffect(() => {
+    (async()=>{
+      try {
+        const response=await axios.get('/api/getbag');
+        console.log(response.data.checkUser);
+        setcount(response.data.checkUser.length);
+      } catch (error) {
+        
+      }
+    })();
+ }, [])
+ 
   return (
     <div className='bag'>
       <Helmet>
