@@ -8,7 +8,7 @@ import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Item.css'
-const Item = () => {
+const Item = ({setcount}) => {
   const [product_color, setproduct_color] = useState('');
   const navigate = useNavigate();
   const { register, watch } = useForm()
@@ -27,13 +27,19 @@ const Item = () => {
           product_name: product_detail.name, product_brand: product_detail.brand, product_price: Math.ceil((product_detail.price) * 10), delivery_date: date.setDate(date.getDate() + 5), size: p_size, image: product_detail.
             images_url
         });
-        console.log(response.data);
+        console.log(response.data.userbag);
+      setcount((i)=>{
+        return i+1;
+      })
+
+        
       } catch (error) {
 
         console.log(error.response.data.message);
 
       }
     }, 3000);
+    
   }
 
   return (

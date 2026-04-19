@@ -17,20 +17,21 @@ import Item from './pages/Item.jsx/Item'
 import Signup from './auth/Signup/Signup'
 const App = () => {
   const [search, setsearch] = useState('');
+  const [count, setcount] = useState(0);
  
   return (
     <div>
       <Routes>
-        <Route element={<Layout search={search} setsearch={setsearch}/>}>
+        <Route element={<Layout search={search} setsearch={setsearch} count={count} setcount={setcount}/>}>
           <Route path='/' element={<Home />} />
           <Route path='men' element={<Men />} />
           <Route path='women' element={<Women />} />
           <Route path='kids' element={<Kids />} />
           <Route path='wish' element={<Wishlist />} />
           <Route path='profile' element={<Profile />} />
-          <Route path='bag' element={<Bag  />} />
+          <Route path='bag' element={<Bag/>} />
           <Route path='search' element={<Search search={search} />} />
-          <Route path='items' element={<Item />} />
+          <Route path='items' element={<Item setcount={setcount} />} />
         </Route>
         <Route path='/login' element={<Login />} />
         <Route path='/otp' element={<OTP/>}/>

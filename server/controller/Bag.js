@@ -10,7 +10,7 @@ const CreateBag = async (req, res) => {
         })
         await userbag.save();
         res.status(200).json({
-            userbag
+            userbag:userbag
         })
     } catch (error) {
         res.status(500).json({

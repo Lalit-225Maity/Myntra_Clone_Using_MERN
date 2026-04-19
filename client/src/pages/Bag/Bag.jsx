@@ -12,7 +12,7 @@ const Bag = () => {
         const response = await axios.get('/api/getbag');
         console.log(response.data.checkUser);
         setbags(response.data.checkUser);
-
+        
       } catch (error) {
 
         console.error('Error fetching bag:', error);
