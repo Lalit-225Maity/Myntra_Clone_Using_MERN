@@ -8,12 +8,19 @@ import { useState } from 'react'
 import './Bag.css'
 const Bag = () => {
   const [bags, setbags] = useState([]);
+  const [cost, setcost] = useState(null);
   useEffect(() => {
     (async () => {
       try {
         const response = await axios.get('/api/getbag');
         console.log(response.data.checkUser);
         setbags(response.data.checkUser);
+        const total_price = response.data.checkUser.reduce((result, next) => {
+          return result + Number(next.product_price)
+        }, 0)
+        console.log(total_price);
+        setcost(total_price);
+
 
       } catch (error) {
 
@@ -48,18 +55,44 @@ const Bag = () => {
                   <p>{i.product_price}</p>
                 </span>
                 <span className='delivery-time'>
-                  <TiTick className='icon_30'/>
+                  <TiTick className='icon_30' />
                   <p>Delivery by {new Date(i.delivery_date).toDateString()}</p>
                 </span>
               </div>
-              <button onClick={()=>{RemoveItem(i._id)}} className='remove-button'>Remove</button>
+              <button onClick={() => { RemoveItem(i._id) }} className='remove-button'>Remove</button>
             </div>
           )) : <div className="image-bag">
             <img src="/cart.png" alt="" />
             <h5>Your Bag is Empty</h5>
           </div>}
+      
         </div>
-
+     <div className="order-prices">
+            <h4 className='price-heading'>Price Details ({bags.length} Item)</h4>
+            <div className="price-details">
+              <table>
+                <tbody>
+                  <tr>
+                    <th>Total MRP</th>
+                    <td><MdCurrencyRupee className='icon_31' />{cost}</td>
+                  </tr>
+                  <tr>
+                    <th>Coupon Discount</th>
+                    
+                    <td>Apply Coupon</td>
+                  </tr>
+                  <tr>
+                    <th>Platform Fee</th>
+                    <td><MdCurrencyRupee className='icon_31' />23</td>
+                  </tr>
+                  
+                  <th><h4>Total Amount</h4></th>
+                  <td><MdCurrencyRupee className='icon_31' />{cost+23}</td>
+                </tbody>
+              </table>
+            </div>
+            <button>Place Order</button>
+          </div>
       </div>
     </div>
   )
