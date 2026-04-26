@@ -5,8 +5,10 @@ import axios from 'axios'
 import { TiTick } from "react-icons/ti";
 import { MdCurrencyRupee } from "react-icons/md";
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import './Bag.css'
 const Bag = () => {
+  const navigate=useNavigate();
   const [bags, setbags] = useState([]);
   const [cost, setcost] = useState(null);
   useEffect(() => {
@@ -27,7 +29,10 @@ const Bag = () => {
         console.error('Error fetching bag:', error);
       }
     })();
-  }, [])
+  }, []);
+  const handleorder=()=>{
+       navigate('/order',{state:{bag:bags,price:cost}})
+  }
   const RemoveItem = async (_id) => {
     const response = await axios.post('/api/removeitems', { _id });
     setTimeout(() => {
@@ -91,7 +96,7 @@ const Bag = () => {
                 </tbody>
               </table>
             </div>
-            <button>Place Order</button>
+            <button onClick={handleorder} >Place Order</button>
           </div>
       </div>
     </div>

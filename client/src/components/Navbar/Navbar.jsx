@@ -79,7 +79,7 @@ const Navbar = ({ search, setsearch ,count,setcount}) => {
                 </div>
               ) : <button onClick={(e) => { navigate('/login'); e.stopPropagation() }}>Login</button>}
               <div className="user-order">
-                <p>Orders</p>
+                <NavLink to='/order'>Order</NavLink>
                 <p>Wishlist</p>
                 <p>Gift Cards</p>
                 <p>Contact Us</p>

@@ -197,10 +197,26 @@
 }
 
  
-.user-order {
+ .user-order {
   display: flex;
   flex-direction: column;
   gap: 2px;
+}
+
+.user-order a {
+  font-size: 13px;
+  color: #3e4152;
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+  text-decoration: none;
+  display: block;
+}
+
+.user-order a:hover {
+  background: #fff4f7;
+  color: #ff3f6c;
 }
 
 .user-order p {

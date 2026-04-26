@@ -12,6 +12,7 @@ import Wishlist from './pages/Wishlist/Wishlist'
 import Login from './auth/Login/Login'
 import Search from './pages/Search/Search'
 import Profile from './pages/Profile/Profile'
+import Order from './pages/service/Order'
 import Item from './pages/Item.jsx/Item'
 
 import Signup from './auth/Signup/Signup'
@@ -32,6 +33,7 @@ const App = () => {
           <Route path='bag' element={<Bag/>} />
           <Route path='search' element={<Search search={search} />} />
           <Route path='items' element={<Item setcount={setcount} />} />
+          <Route path='order' element={<Order/>}/>
         </Route>
         <Route path='/login' element={<Login />} />
         <Route path='/otp' element={<OTP/>}/>
