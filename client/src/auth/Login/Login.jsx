@@ -76,7 +76,7 @@ const Login = () => {
     return (
         <div className='login'>
             <Helmet>
-                <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+                <link rel="shortcut icon" href="/free-myntra-icon-svg-download-png-2249158.png" type="image/x-icon" />
             </Helmet>
             <div className="emil-form">
                 <form onSubmit={emailsub(HandleEmail)}>
@@ -89,6 +89,7 @@ const Login = () => {
                         <p>Enter your email to receive a secure one-time passcode.</p>
                     </div>
                     <TextField label="Enter Your Email ID" variant='outlined' color='dark' size='small' type="email" {...emailreg("email")}
+                      autoComplete="User-emails-login"
                         sx={{
                             width: '100%',
                             '& .MuiOutlinedInput-root': {

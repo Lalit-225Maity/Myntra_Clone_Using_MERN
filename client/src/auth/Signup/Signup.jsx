@@ -34,13 +34,22 @@ const Signup = () => {
     return (
         <div className='account'>
             <div className="signup-form">
-                <h4>Create Account</h4>
+                <span className='sign-up-image '>
+                    <img src="/free-myntra-icon-svg-download-png-2249158.png" alt="" />
+                     
+                </span>
+                <h1>Create Your Account</h1>
+                <h3>Join us today and start your journey</h3>
+                <p>
+                    Sign up now to access exclusive features, personalized services,
+                    and a seamless experience.
+                </p>
                 <form onSubmit={handleSubmit(handleEmail)}>
-                    <TextField label="Write Your Name" {...register("username")} type="text" variant="outlined" size="small" color="success" required/>
-                    <TextField label="Write Your Email ID" {...register("email")} type="email" variant="outlined" size="small" color="success"  required />
-                    <TextField label="Address" {...register("address")} type="text" variant="outlined" size="small" color="success"  required/>
+                    <TextField label="Write Your Name" {...register("username")} type="text" variant="outlined" size="small" color="success" required  />
+                    <TextField label="Write Your Email ID" {...register("email")} type="email" variant="outlined" size="small" color="success" required />
+                    <TextField label="Address" {...register("address")} type="text" variant="outlined" size="small" color="success" required />
                     <TextField label="Mobile Number" {...register("phone_number")} type="text" variant="outlined" size="small" color="success" required />
-                    <TextField label="Pin Code Number" {...register("Pin")} type="text" variant="outlined" size="small" color="success"  required/>
+                    <TextField label="Pin Code Number" {...register("Pin")} type="text" variant="outlined" size="small" color="success" required />
                     <Button variant="outlined" type="submit" color="success">{isSubmitting ? (
                         <div className="loading"></div>
                     ) : "sign up"}</Button>

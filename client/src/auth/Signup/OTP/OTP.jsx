@@ -43,7 +43,13 @@ const OTP = () => {
                 <div className="heading">
                     <h5>A OTP code has been sent to the given Email ID </h5>
                 </div>
-                <TextField label='Verify Email' variant='outlined' color='dark' size='small' {...register('otp')} />
+                <TextField
+                    label="Verify Email"
+                    variant="outlined"
+                    size="small"
+                    {...register("otp")}
+
+                />
                 <button type='submit'>{isSubmitting ? (
                     <div className="loading"></div>
                 ) : "verify"}</button>
