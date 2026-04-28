@@ -2,6 +2,7 @@ const{InsertProduct,searchProduct,FilterProduct}=require('../controller/Products
 const{createUser,createOTP,VerifyOTP,Logout}=require('../controller/User');
 const{CreateBag,getBag,removeItems}=require('../controller/Bag');
 const verifyauth=require('../middleware/Authentication');
+const{createOrder,CancelOrder,FetchOrder}=require('../controller/Order');
 const express=require('express');
 const router=express.Router();
 router.post('/createProduct',InsertProduct);
@@ -14,4 +15,7 @@ router.post('/logout',Logout);
 router.post('/createbag',verifyauth,CreateBag);
 router.get('/getbag',verifyauth,getBag);
 router.post('/removeitems',removeItems);
+router.post('/createorder',verifyauth,createOrder);
+router.post('/cancelorder',CancelOrder);
+router.get('/fetchorder',verifyauth,FetchOrder);
 module.exports=router;

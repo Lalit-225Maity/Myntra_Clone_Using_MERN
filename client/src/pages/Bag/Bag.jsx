@@ -8,7 +8,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import './Bag.css'
 const Bag = () => {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const [bags, setbags] = useState([]);
   const [cost, setcost] = useState(null);
   useEffect(() => {
@@ -30,8 +30,8 @@ const Bag = () => {
       }
     })();
   }, []);
-  const handleorder=()=>{
-       navigate('/order',{state:{bag:bags,price:cost}})
+  const handleorder = () => {
+    navigate('/address', { state: { bag: bags, price: cost } })
   }
   const RemoveItem = async (_id) => {
     const response = await axios.post('/api/removeitems', { _id });
@@ -45,34 +45,32 @@ const Bag = () => {
         <title>Bag</title>
         <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/128/2662/2662503.png" type="image/x-icon" />
       </Helmet>
-      <div className="bag-items-details">
+      {bags.length > 0 ? (
+        <div className="bag-items-details">
 
-        <div className="bag-items">
-          {bags.length > 0 ? bags.map((i) => (
-            <div className="bag-product-coontainer"  >
-              <img src={i.image} alt="" />
-              <div className="product-details-section">
-                <h4>{i.product_brand}</h4>
-                <p>{i.product_name}</p>
-                <p>size:{i.size}</p>
-                <span className='price-section'>
-                  <MdCurrencyRupee className='icon_30' />
-                  <p>{i.product_price}</p>
-                </span>
-                <span className='delivery-time'>
-                  <TiTick className='icon_30' />
-                  <p>Delivery by {new Date(i.delivery_date).toDateString()}</p>
-                </span>
+          <div className="bag-items">
+            {bags.map((i) => (
+              <div className="bag-product-coontainer"  >
+                <img src={i.image} alt="" />
+                <div className="product-details-section">
+                  <h4>{i.product_brand}</h4>
+                  <p>{i.product_name}</p>
+                  <p>size:{i.size}</p>
+                  <span className='price-section'>
+                    <MdCurrencyRupee className='icon_30' />
+                    <p>{i.product_price}</p>
+                  </span>
+                  <span className='delivery-time'>
+                    <TiTick className='icon_30' />
+                    <p>Delivery by {new Date(i.delivery_date).toDateString()}</p>
+                  </span>
+                </div>
+                <button onClick={() => { RemoveItem(i._id) }} className='remove-button'>Remove</button>
               </div>
-              <button onClick={() => { RemoveItem(i._id) }} className='remove-button'>Remove</button>
-            </div>
-          )) : <div className="image-bag">
-            <img src="/cart.png" alt="" />
-            <h5>Your Bag is Empty</h5>
-          </div>}
-      
-        </div>
-     <div className="order-prices">
+            ))}
+
+          </div>
+          <div className="order-prices">
             <h4 className='price-heading'>Price Details ({bags.length} Item)</h4>
             <div className="price-details">
               <table>
@@ -83,22 +81,26 @@ const Bag = () => {
                   </tr>
                   <tr>
                     <th>Coupon Discount</th>
-                    
+
                     <td>Apply Coupon</td>
                   </tr>
                   <tr>
                     <th>Platform Fee</th>
                     <td><MdCurrencyRupee className='icon_31' />23</td>
                   </tr>
-                  
+
                   <th><h4>Total Amount</h4></th>
-                  <td><MdCurrencyRupee className='icon_31' />{cost+23}</td>
+                  <td><MdCurrencyRupee className='icon_31' />{cost + 23}</td>
                 </tbody>
               </table>
             </div>
             <button onClick={handleorder} >Place Order</button>
           </div>
-      </div>
+        </div>) : (<div className="image-bag">
+          <img src="/cart.png" alt="" />
+          <h5>Your Bag is Empty</h5>
+        </div>
+      )}
     </div>
   )
 }
